@@ -6,17 +6,23 @@ sys.path.append(os.path.dirname(__file__))
 
 from train import train_model
 from evaluate import evaluate_model
+from explain import explain_model
+
 
 def main():
     parser = argparse.ArgumentParser(description="Network Traffic Behavior CLI")
     parser.add_argument("--train", action="store_true", help="Train model")
     parser.add_argument("--eval", action="store_true", help="Evaluate model")
+    parser.add_argument("--explain", action="store_true", help="Explain model using SHAP")
+
     args = parser.parse_args()
 
     if args.train:
         train_model()
     elif args.eval:
         evaluate_model()
+    elif args.explain:
+        explain_model()
     else:
         print("✅ Commands:")
         print("python3 src/cli.py --train")
